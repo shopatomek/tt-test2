@@ -26,10 +26,12 @@ const SignInButton = () => {
     return (
       <div className="container ml-auto">
         <p className="text-sm flex-row text-neutral-700">
+        {/* @ts-ignore */}
           Signed as {session.user.name} at {formattedDate}
         </p>
         <div className="flex float-right py-3">
           <Image
+          // @ts-ignore
             src={session.user.image as string}
             height={60}
             width={60}
@@ -39,6 +41,7 @@ const SignInButton = () => {
           <p className="text-neutral-600 text-sm mr-4 font-bold ">
             Welcome
             <p className="text-neutral-400 flex-row font-bold">
+              {/* @ts-ignore */}
               {session.user.name}
             </p>
           </p>

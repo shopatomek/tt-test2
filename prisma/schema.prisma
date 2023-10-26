@@ -1,63 +1,63 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// // This is your Prisma schema file,
+// // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-generator client {
-  provider = "prisma-client-js"
-}
+// generator client {
+//   provider = "prisma-client-js"
+// }
 
-datasource db {
-  provider = "mongodb"
-  url      = env("DATABASE_URL")
-}
+// datasource db {
+//   provider = "mongodb"
+//   url      = env("DATABASE_URL")
+// }
 
-model User {
-  id             String    @id @default(auto()) @map("_id") @db.ObjectId
-  name           String?
-  email          String?   @unique
-  emailVerified  DateTime?
-  image          String?
-  hashedPassword String?
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
-  accounts       Account[]
-  lastLogin      DateTime? @updatedAt
-  tiktoks        tiktok[]
-}
+// model User {
+//   id             String    @id @default(auto()) @map("_id") @db.ObjectId
+//   name           String?
+//   email          String?   @unique
+//   emailVerified  DateTime?
+//   image          String?
+//   hashedPassword String?
+//   createdAt      DateTime  @default(now())
+//   updatedAt      DateTime  @updatedAt
+//   accounts       Account[]
+//   lastLogin      DateTime? @updatedAt
+//   tiktoks        tiktok[]
+// }
 
-model tiktok {
-  id            String   @id @default(auto()) @map("_id") @db.ObjectId
-  tiktokId      String?
-  authorId      String?
-  createTime    Int?
-  diggCount     Int?
-  playCount     Int?
-  uniqueId      String?
-  nickname      String?
-  followerCount Int?
-  heartCount    Int?
-  videoCount    String?
-  description   String?  @map("itdescription")
-  tags          String?
-  user          User?    @relation(fields: [creator], references: [email])
-  creator       String?
-  createdAt     DateTime @default(now())
-}
+// model tiktok {
+//   id            String   @id @default(auto()) @map("_id") @db.ObjectId
+//   tiktokId      String?
+//   authorId      String?
+//   createTime    Int?
+//   diggCount     Int?
+//   playCount     Int?
+//   uniqueId      String?
+//   nickname      String?
+//   followerCount Int?
+//   heartCount    Int?
+//   videoCount    String?
+//   description   String?  @map("itdescription")
+//   tags          String?
+//   user          User?    @relation(fields: [creator], references: [email])
+//   creator       String?
+//   createdAt     DateTime @default(now())
+// }
 
-model Account {
-  id                String  @id @default(auto()) @map("_id") @db.ObjectId
-  userId            String
-  type              String
-  provider          String
-  providerAccountId String
-  refresh_token     String? @db.String
-  access_token      String  @db.String
-  expires_at        Int?
-  token_type        String?
-  scope             String?
-  id_token          String? @db.String
-  session_state     String?
+// model Account {
+//   id                String  @id @default(auto()) @map("_id") @db.ObjectId
+//   userId            String
+//   type              String
+//   provider          String
+//   providerAccountId String
+//   refresh_token     String? @db.String
+//   access_token      String  @db.String
+//   expires_at        Int?
+//   token_type        String?
+//   scope             String?
+//   id_token          String? @db.String
+//   session_state     String?
 
-  user User @relation(fields: [userId], references: [email], onDelete: Cascade)
+//   user User @relation(fields: [userId], references: [email], onDelete: Cascade)
 
-  @@unique([provider, providerAccountId])
-}
+//   @@unique([provider, providerAccountId])
+// }
