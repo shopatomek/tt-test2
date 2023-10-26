@@ -17,16 +17,18 @@ export const metadata: Metadata = {
 export default async function RootLayout() {
   const session = await getServerSession();
   return (
-    <SessionProvider session={session}>
+  
       <html lang="en">
         <body className="container py-10 mx-auto">
+        <SessionProvider session={session}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Providers>
               <Appbar />
             </Providers>
           </ThemeProvider>
+          </SessionProvider>
         </body>
       </html>
-    </SessionProvider>
+    
   );
 }

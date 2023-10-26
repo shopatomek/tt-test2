@@ -1,14 +1,13 @@
 "use client";
 import { signIn, signOut, useSession } from "next-auth/react";
 import React from "react";
-import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { FcGoogle } from "react-icons/fc";
 import Image from "next/image";
 import DataBaseTable from "@/app/database/data-table";
 import { columns } from "@/app/database/columns";
 import { data } from "@/lib/data";
-import { ThemeToggle } from "./themetoggle";
+
 import { format } from "date-fns";
 import { Dice1 } from "lucide-react";
 
