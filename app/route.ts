@@ -5,8 +5,8 @@ import GoogleProvider from "next-auth/providers/google";
 
 // const prisma = new PrismaClient();
 
-export const authOptions = {
-  debug: true,
+const handler = NextAuth({
+  
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID ?? "",
@@ -14,11 +14,11 @@ export const authOptions = {
     }),
   ],
   // callbacks: {
-  //   // @ts-ignore
-  //   async signIn({ user, account, email, profile }) {
+  //   async signIn({ user, account }) {
   //     const existingUser = await prisma.user.findUnique({
   //       where: { email: user.email },
   //     });
+
   //     if (existingUser) {
   //       await prisma.user.update({
   //         where: { id: existingUser.id },
@@ -26,6 +26,7 @@ export const authOptions = {
   //           name: user.name,
   //           image: user.image,
   //           updatedAt: new Date(),
+  //           lastLogin: new Date(),
   //         },
   //       });
   //     } else {
@@ -34,18 +35,31 @@ export const authOptions = {
   //           name: user.name,
   //           email: user.email,
   //           image: user.image,
-  //           updatedAt: new Date(),
+  //           lastLogin: new Date(),
   //         },
   //       });
   //     }
 
   //     return user;
   //   },
-  // },
-};
-// @ts-ignore
+  //   async signOut({ user }) {
+  //     const existingUser = await prisma.user.findUnique({
+  //       where: { email: user.email },
+  //     });
 
-export const handler = NextAuth(authOptions);
+  //     if (existingUser && existingUser.lastLogout === null) {
+  //       await prisma.user.update({
+  //         where: { id: existingUser.id, lastLogin: null },
+  //         data: {
+  //           lastLogout: new Date(), // Aktualizuj lastLogout podczas wylogowywania
+  //         },
+  //       });
+  //     }
+
+  //     return null;
+  //   },
+  // },
+});
 
 export { handler as GET, handler as POST };
 
