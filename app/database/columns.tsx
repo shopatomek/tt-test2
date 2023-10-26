@@ -14,7 +14,7 @@ import {
 import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 
-export const columns: ColumnDef<Data>[] = [
+export const columns: ColumnDef<typeof Data>[] = [
   {
     id: "select",
     header: ({ table }) => {
@@ -137,10 +137,14 @@ export const columns: ColumnDef<Data>[] = [
   {
     id: "Actions",
     cell: ({ row }) => {
+      
       const data = row.original;
+      // @ts-ignore
       const uniqueId = data.uniqueId;
+      // @ts-ignore
       const itdescription = data.itdescription;
-      const tags = data.tags;
+      // @ts-ignore
+      const tags = data.tags ;
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

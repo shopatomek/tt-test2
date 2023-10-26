@@ -1,4 +1,4 @@
-export const data = [
+export const Data = [
   {
     "tiktokId": "7211537468208860458",
     "authorId": "7155995379640157227",
